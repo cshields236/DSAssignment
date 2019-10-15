@@ -20,6 +20,15 @@ public class Driver {
     public Driver() {
     }
 
+    public Driver(String name, String email, String password)
+    {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+
+
+    }
+
     public Driver(String name, String email, String password, DriverRecord drivRecord)
     {
         this.name = name;
