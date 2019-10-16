@@ -57,4 +57,14 @@ public class mainDAO {
         em.close();
         return journeys;
     }
+
+
+
+        public List<Driver> getDriverByName(String name){
+            EntityManager em = emf.createEntityManager();
+            List<Driver> drivers = (List<Driver>) em.createNamedQuery("Driver.findByName").setParameter("name", name).getResultList();
+            em.close();
+            return drivers;
+
+    }
 }

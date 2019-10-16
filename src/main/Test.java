@@ -11,14 +11,14 @@ import java.util.List;
 
 public class Test {
 
-    public Test(){
+    public Test() {
         mainDAO mainDAO = new mainDAO();
 
 //
 //        DriverRecord rec = new DriverRecord("test");
 //        mainDAO.persist(rec);
 //
-//        Driver driver = new Driver("Conor","conor@conor.com", "hunter2", rec);
+//         driver = new Driver("Conor","conor@conor.com", "hunter2", rec);
 //
 //        mainDAO.persist(driver);
 //
@@ -35,16 +35,32 @@ public class Test {
 //        HistoricalJourney historicalJourney = new HistoricalJourney("23km", "high");
 //        mainDAO.persist(historicalJourney);
 
-        List<HistoricalJourney> journeys = mainDAO.getAllJourneys();
+//        List<HistoricalJourney> journeys = mainDAO.getAllJourneys();
+//
+//        DriverRecord rec;
+//        rec = new DriverRecord((ArrayList) journeys);
+//        mainDAO.persist(rec);
 
-        DriverRecord rec;
-        rec = new DriverRecord((ArrayList) journeys);
-        mainDAO.persist(rec);
+
+        //REMOVE
+        Driver driver1 = new Driver(4,"John","completely@email.com", "afwewef");
+       mainDAO.merge(driver1);
+
+        // mainDAO.remove(driver);
+
 
     }
 
+    public static void showTables() {
+        mainDAO mainDAO = new mainDAO();
+        List<HistoricalJourney> journeys = mainDAO.getAllJourneys();
+        for (HistoricalJourney j : journeys) {
+            System.out.println(j.getJourneyLength() + " " + j.getTirednessLevel());
+        }
+    }
 
     public static void main(String[] args) {
         new Test();
+        //showTables();
     }
 }

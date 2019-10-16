@@ -6,7 +6,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedQueries({@NamedQuery(name = "Driver.findAll", query = "select o from Driver o")})
+@NamedQueries({@NamedQuery(name = "Driver.findAll", query = "select o from Driver o"),
+        @NamedQuery(name = "Driver.findByName", query = "select o from Driver o where o.name=:name")})
 
 @Entity
 public class Driver {
@@ -21,10 +22,10 @@ public class Driver {
     private String password;
 
 
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     private DriverRecord driverDriverRecord;
 
-    @ManyToMany
+    @ManyToMany (cascade = CascadeType.ALL)
     private List<Car> carsList = new ArrayList<Car>();
 
     public Driver() {
@@ -37,7 +38,14 @@ public class Driver {
 
 
     }
+    public Driver(int id, String name, String email, String password) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
 
+
+    }
     public Driver(String name, String email, String password, DriverRecord drivRecord) {
         this.name = name;
         this.email = email;
@@ -45,6 +53,7 @@ public class Driver {
         this.driverDriverRecord = drivRecord;
 
     }
+
     public Driver(String name, String email, String password, ArrayList carsList) {
         this.name = name;
         this.email = email;
