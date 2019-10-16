@@ -6,6 +6,7 @@ import entities.Driver;
 import entities.DriverRecord;
 import entities.HistoricalJourney;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Test {
@@ -31,8 +32,14 @@ public class Test {
 //        mainDAO.persist(car);
 
 
-        HistoricalJourney historicalJourney = new HistoricalJourney("23km", "high");
-        mainDAO.persist(historicalJourney);
+//        HistoricalJourney historicalJourney = new HistoricalJourney("23km", "high");
+//        mainDAO.persist(historicalJourney);
+
+        List<HistoricalJourney> journeys = mainDAO.getAllJourneys();
+
+        DriverRecord rec;
+        rec = new DriverRecord((ArrayList) journeys);
+        mainDAO.persist(rec);
 
     }
 

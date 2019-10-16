@@ -1,6 +1,7 @@
 package dao;
 
 import entities.Driver;
+import entities.HistoricalJourney;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -50,5 +51,10 @@ public class mainDAO {
     }
 
 
-
+    public List<HistoricalJourney> getAllJourneys() {
+        EntityManager em = emf.createEntityManager();
+        List<HistoricalJourney> journeys = (List<HistoricalJourney>) em.createNamedQuery("HistoricalJourney.findAll").getResultList();
+        em.close();
+        return journeys;
+    }
 }
