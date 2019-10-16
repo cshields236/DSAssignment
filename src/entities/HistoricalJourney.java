@@ -13,6 +13,7 @@ public class HistoricalJourney {
     private String journeyLength;
     private String tirednessLevel;
 
+
     public HistoricalJourney() {
     }
 

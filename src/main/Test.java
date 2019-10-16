@@ -1,10 +1,7 @@
 package main;
 
 import dao.mainDAO;
-import entities.Car;
-import entities.Driver;
-import entities.DriverRecord;
-import entities.HistoricalJourney;
+import entities.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,16 +32,35 @@ public class Test {
 //        HistoricalJourney historicalJourney = new HistoricalJourney("23km", "high");
 //        mainDAO.persist(historicalJourney);
 
-//        List<HistoricalJourney> journeys = mainDAO.getAllJourneys();
+           List<HistoricalJourney> journeys = mainDAO.getAllJourneys();
 //
 //        DriverRecord rec;
 //        rec = new DriverRecord((ArrayList) journeys);
 //        mainDAO.persist(rec);
 
+        Image i1 = new Image("face3", "png");
+        Image i2 = new Image("face4", "png");
+        Image i3 = new Image("face5", "png");
+        mainDAO.persist(i1);
+        mainDAO.persist(i2);
+        mainDAO.persist(i3);
+        for (HistoricalJourney i: journeys){
+            i1.setHistoricalJourney(i);
+            i2.setHistoricalJourney(i);
+
+        }
+        mainDAO.merge(i1);
+        mainDAO.merge(i2);
+
+
+
 
         //REMOVE
-        Driver driver1 = new Driver(4,"John","completely@email.com", "afwewef");
-       mainDAO.merge(driver1);
+
+
+        //MERGE
+//        Driver driver1 = new Driver(4,"John","completely@email.com", "afwewef");
+//       mainDAO.merge(driver1);
 
         // mainDAO.remove(driver);
 
