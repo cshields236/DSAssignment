@@ -1,20 +1,40 @@
 package entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class DriverRecord {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String pastJourneys;
 
-    public DriverRecord(){
+    @OneToMany
+    private List<HistoricalJourney> journeyList = new ArrayList<HistoricalJourney>();
+
+    public DriverRecord() {
 
     }
+
+    public DriverRecord(ArrayList journeyList) {
+
+        this.journeyList = journeyList;
+
+    }
+
+
+    public List<HistoricalJourney> getJourneyList() {
+        return journeyList;
+    }
+
+    public void setJourneyList(List<HistoricalJourney> journeyList) {
+        this.journeyList = journeyList;
+    }
+
+
 
     public int getId() {
         return id;
@@ -24,15 +44,5 @@ public class DriverRecord {
         this.id = id;
     }
 
-    public String getPastJourneys() {
-        return pastJourneys;
-    }
 
-    public void setPastJourneys(String pastJourneys) {
-        this.pastJourneys = pastJourneys;
-    }
-
-    public DriverRecord(String pastJourneys) {
-        this.pastJourneys = pastJourneys;
-    }
 }
