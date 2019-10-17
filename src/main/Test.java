@@ -42,20 +42,20 @@ public class Test {
 //        DriverRecord rec;
 //        rec = new DriverRecord((ArrayList) journeys);
 //        mainDAO.persist(rec);
-
-        Image i1 = new Image("face3", "png");
-        Image i2 = new Image("face4", "png");
-        Image i3 = new Image("face5", "png");
-        mainDAO.persist(i1);
-        mainDAO.persist(i2);
-        mainDAO.persist(i3);
-        for (HistoricalJourney i : journeys) {
-            i1.setHistoricalJourney(i);
-            i2.setHistoricalJourney(i);
-
-        }
-        mainDAO.merge(i1);
-        mainDAO.merge(i2);
+//
+//        Image i1 = new Image("face3", "png");
+//        Image i2 = new Image("face4", "png");
+//        Image i3 = new Image("face5", "png");
+//        mainDAO.persist(i1);
+//        mainDAO.persist(i2);
+//        mainDAO.persist(i3);
+//        for (HistoricalJourney i : journeys) {
+//            i1.setHistoricalJourney(i);
+//            i2.setHistoricalJourney(i);
+//
+//        }
+//        mainDAO.merge(i1);
+//        mainDAO.merge(i2);
 
 
         //REMOVE
@@ -69,11 +69,15 @@ public class Test {
 //        mainDAO.remove(driver1);
 //        em.close();
 
-        Driver driver = em.find(Driver.class, 1);
-
-        em.getTransaction().begin();
-        em.remove(driver);
-        em.getTransaction().commit();
+//        Driver driver = em.find(Driver.class, 1);
+//
+//        em.getTransaction().begin();
+//        em.remove(driver);
+//        em.getTransaction().commit();
+        Driver d =new Driver("George", "gg@gmail.com", "1234");
+        mainDAO.persist(d);
+        RealTimeJourney realTimeJourney = new RealTimeJourney(true,d , journeys.get(0));
+        mainDAO.persist(realTimeJourney);
 
     }
 

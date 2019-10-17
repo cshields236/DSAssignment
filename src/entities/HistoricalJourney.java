@@ -14,6 +14,8 @@ public class HistoricalJourney {
     private String tirednessLevel;
 
 
+
+
     public HistoricalJourney() {
     }
 
@@ -21,6 +23,10 @@ public class HistoricalJourney {
         this.journeyLength = journeyLength;
         this.tirednessLevel = tirednessLevel;
     }
+
+   
+
+
 
     public int getId() {
         return id;
