@@ -3,10 +3,15 @@ package main;
 import dao.mainDAO;
 import entities.*;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Test {
+    protected static EntityManagerFactory emf = Persistence.createEntityManagerFactory("conorspersistanceunit");
+
 
     public Test() {
         mainDAO mainDAO = new mainDAO();
@@ -32,7 +37,7 @@ public class Test {
 //        HistoricalJourney historicalJourney = new HistoricalJourney("23km", "high");
 //        mainDAO.persist(historicalJourney);
 
-           List<HistoricalJourney> journeys = mainDAO.getAllJourneys();
+        List<HistoricalJourney> journeys = mainDAO.getAllJourneys();
 //
 //        DriverRecord rec;
 //        rec = new DriverRecord((ArrayList) journeys);
@@ -44,7 +49,7 @@ public class Test {
         mainDAO.persist(i1);
         mainDAO.persist(i2);
         mainDAO.persist(i3);
-        for (HistoricalJourney i: journeys){
+        for (HistoricalJourney i : journeys) {
             i1.setHistoricalJourney(i);
             i2.setHistoricalJourney(i);
 
@@ -53,17 +58,22 @@ public class Test {
         mainDAO.merge(i2);
 
 
-
-
         //REMOVE
 
 
         //MERGE
-//        Driver driver1 = new Driver(4,"John","completely@email.com", "afwewef");
-//       mainDAO.merge(driver1);
+        Driver driver1 = new Driver(4, "John", "completely@email.com", "afwewef");
+        EntityManager em = emf.createEntityManager();
+//        em.getTransaction().begin();
+        // use other merge thing not .merge()
+//        mainDAO.remove(driver1);
+//        em.close();
 
-        // mainDAO.remove(driver);
+        Driver driver = em.find(Driver.class, 1);
 
+        em.getTransaction().begin();
+        em.remove(driver);
+        em.getTransaction().commit();
 
     }
 
