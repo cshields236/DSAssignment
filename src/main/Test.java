@@ -27,7 +27,7 @@ public class Test {
 //        Driver driver1 = new Driver("Frank","frank@conor.com", "hunter2");
 //        mainDAO.persist(driver1);
 //
-//        List<Driver> driverList = mainDAO.getAllDrivers();
+        List<Driver> driverList = mainDAO.getAllDrivers();
 //
 //
 //        Car car = new Car("VW", "13-D-19008", driverList);
@@ -62,22 +62,42 @@ public class Test {
 
 
         //MERGE
-        Driver driver1 = new Driver(4, "John", "completely@email.com", "afwewef");
+        ///Driver driver1 = new Driver(4, "John", "completely@email.com", "afwewef");
         EntityManager em = emf.createEntityManager();
 //        em.getTransaction().begin();
-        // use other merge thing not .merge()
+
 //        mainDAO.remove(driver1);
 //        em.close();
 
-//        Driver driver = em.find(Driver.class, 1);
+        Driver driver = em.find(Driver.class, 1);
 //
 //        em.getTransaction().begin();
 //        em.remove(driver);
-//        em.getT = Transaction().commit();
-//        Driver d =new Driver("George", "gg@gmail.com", "1234");
+//        em.getTransaction().commit();
+//        Driver d = new Driver("George", "gg@gmail.com", "1234");
 //        mainDAO.persist(d);
-//        RealTimeJourney realTimeJourney = new RealTimeJourney(true,d , journeys.get(0));
+//        RealTimeJourney realTimeJourney = new RealTimeJourney(true, d, journeys.get(0));
 //        mainDAO.persist(realTimeJourney);
+//
+//        List<Car> cars = mainDAO.getCarbyreg("13-D-19008");
+//        for (Car c : cars) {
+//            c.setMake("Audi");
+//            mainDAO.merge(c);
+//        }
+
+//        Car car = new Car("BMW", "18-CN-199", driverList);
+//        mainDAO.persist(car);
+
+//        Car car1 = em.find(Car.class, 2);
+//        em.getTransaction().begin();
+//        em.remove(car1);
+//        em.getTransaction().commit();
+
+//        List<Driver> drivers = mainDAO.getDriverByName("Frank");
+//        for (Driver driver1 : drivers) {
+//         driver1.setEmail("frankie@yahoo.ie");
+//         mainDAO.merge(driver1);
+//        }
 //
 
     }
@@ -103,16 +123,15 @@ public class Test {
         }
 
         List<Image> images = mainDAO.getAllImages();
-        for (Image i :images) {
+        for (Image i : images) {
             System.out.println("Image: " + i.getTitle() + " File Type: " + i.getFileType());
         }
 
 
         List<RealTimeJourney> realTimeJourneys = mainDAO.getAllRealTimeJourney();
-        for (RealTimeJourney r :realTimeJourneys) {
+        for (RealTimeJourney r : realTimeJourneys) {
             System.out.println("ID: " + r.getDriver() + " Tired?: " + r.isTired());
         }
-
 
 
     }
@@ -122,7 +141,7 @@ public class Test {
         // Get By Parameter
         List<Car> cars = mainDAO.getCarbyreg("13-D-19008");
         for (Car c : cars) {
-            System.out.println("Car manufacturer: "  + c.getMake() + " Registration: " + c.getReg());
+            System.out.println("Car manufacturer: " + c.getMake() + " Registration: " + c.getReg());
         }
 
 
@@ -134,11 +153,11 @@ public class Test {
 
         List<HistoricalJourney> journeys = mainDAO.getJourneybyTirednessLevel("high");
         for (HistoricalJourney j : journeys) {
-            System.out.println( j.getId() +" " + j.getTirednessLevel());
+            System.out.println(j.getId() + " " + j.getTirednessLevel());
         }
 
         List<Image> images = mainDAO.getImageByTitle("face3");
-        for (Image i :images) {
+        for (Image i : images) {
             System.out.println("Image: " + i.getTitle() + " File Type: " + i.getFileType());
         }
     }
