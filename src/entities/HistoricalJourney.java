@@ -2,7 +2,9 @@ package entities;
 
 import javax.persistence.*;
 
-@NamedQueries({@NamedQuery(name = "HistoricalJourney.findAll", query = "select o from HistoricalJourney o")})
+
+@NamedQueries({@NamedQuery(name = "HistoricalJourney.findAll", query = "select o from HistoricalJourney o"),
+        @NamedQuery(name = "HistoricalJourney.findByTirednessLevel", query = "select o from HistoricalJourney o where o.tirednessLevel=:tirednessLevel")})
 
 @Entity
 public class HistoricalJourney {

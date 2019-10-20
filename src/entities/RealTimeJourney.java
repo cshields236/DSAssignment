@@ -2,6 +2,9 @@ package entities;
 
 import javax.persistence.*;
 
+
+@NamedQueries({@NamedQuery(name = "RealTimeJourney.findAll", query = "select o from RealTimeJourney o")})
+
 @Entity
 public class RealTimeJourney {
     @Id

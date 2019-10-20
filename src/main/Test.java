@@ -16,7 +16,7 @@ public class Test {
     public Test() {
         mainDAO mainDAO = new mainDAO();
 
-//
+//          PERSIST
 //        DriverRecord rec = new DriverRecord("test");
 //        mainDAO.persist(rec);
 //
@@ -73,24 +73,79 @@ public class Test {
 //
 //        em.getTransaction().begin();
 //        em.remove(driver);
-//        em.getTransaction().commit();
-        Driver d =new Driver("George", "gg@gmail.com", "1234");
-        mainDAO.persist(d);
-        RealTimeJourney realTimeJourney = new RealTimeJourney(true,d , journeys.get(0));
-        mainDAO.persist(realTimeJourney);
+//        em.getT = Transaction().commit();
+//        Driver d =new Driver("George", "gg@gmail.com", "1234");
+//        mainDAO.persist(d);
+//        RealTimeJourney realTimeJourney = new RealTimeJourney(true,d , journeys.get(0));
+//        mainDAO.persist(realTimeJourney);
+//
 
     }
 
-    public static void showTables() {
+
+    public static void showAllTables() {
+
+
         mainDAO mainDAO = new mainDAO();
         List<HistoricalJourney> journeys = mainDAO.getAllJourneys();
         for (HistoricalJourney j : journeys) {
-            System.out.println(j.getJourneyLength() + " " + j.getTirednessLevel());
+            System.out.println("Journey: " + j.getJourneyLength() + " " + j.getTirednessLevel());
+        }
+
+        List<Car> cars = mainDAO.getAllCars();
+        for (Car c : cars) {
+            System.out.println("Car: " + c.getMake() + " " + c.getReg());
+        }
+
+        List<Driver> drivers = mainDAO.getAllDrivers();
+        for (Driver d : drivers) {
+            System.out.println("Driver: " + d.getName() + " E-mail: " + d.getEmail());
+        }
+
+        List<Image> images = mainDAO.getAllImages();
+        for (Image i :images) {
+            System.out.println("Image: " + i.getTitle() + " File Type: " + i.getFileType());
+        }
+
+
+        List<RealTimeJourney> realTimeJourneys = mainDAO.getAllRealTimeJourney();
+        for (RealTimeJourney r :realTimeJourneys) {
+            System.out.println("ID: " + r.getDriver() + " Tired?: " + r.isTired());
+        }
+
+
+
+    }
+
+
+    public static void showWithVariable() {
+        // Get By Parameter
+        List<Car> cars = mainDAO.getCarbyreg("13-D-19008");
+        for (Car c : cars) {
+            System.out.println("Car manufacturer: "  + c.getMake() + " Registration: " + c.getReg());
+        }
+
+
+        List<Driver> drivers = mainDAO.getDriverByName("Frank");
+        for (Driver d : drivers) {
+            System.out.println("Driver: " + d.getName(). + " E-mail: " + d.getEmail());
+        }
+
+
+        List<HistoricalJourney> journeys = mainDAO.getJourneybyTirednessLevel("high");
+        for (HistoricalJourney j : journeys) {
+            System.out.println( j.getId() +" " + j.getTirednessLevel());
+        }
+
+        List<Image> images = mainDAO.getImageByTitle("face3");
+        for (Image i :images) {
+            System.out.println("Image: " + i.getTitle() + " File Type: " + i.getFileType());
         }
     }
 
     public static void main(String[] args) {
         new Test();
-        //showTables();
+        showAllTables();
+        //showWithVariable();
     }
 }

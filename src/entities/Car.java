@@ -4,6 +4,10 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedQueries({@NamedQuery(name = "Car.findAll", query = "select o from Car o"),
+        @NamedQuery(name = "Car.findByReg", query = "select o from Car o where o.reg=:reg")})
+
+
 @Entity
 public class Car {
     @Id

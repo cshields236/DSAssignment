@@ -2,6 +2,10 @@ package entities;
 
 import javax.persistence.*;
 
+
+@NamedQueries({@NamedQuery(name = "Image.findAll", query = "select o from Image o"),
+        @NamedQuery(name = "Image.findByTitle", query = "select o from Image o where o.title=:title")})
+
 @Entity
 public class Image {
 
@@ -20,7 +24,7 @@ public class Image {
         this.title = title;
         this.fileType = fileType;
     }
-    public Image( String title, String fileType, HistoricalJourney historicalJourney) {
+    public Image(String title, String fileType, HistoricalJourney historicalJourney) {
         this.title = title;
         this.fileType = fileType;
         this.historicalJourney = historicalJourney;
