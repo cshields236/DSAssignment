@@ -128,7 +128,7 @@ public class Test {
 
         List<Driver> drivers = mainDAO.getDriverByName("Frank");
         for (Driver d : drivers) {
-            System.out.println("Driver: " + d.getName(). + " E-mail: " + d.getEmail());
+            System.out.println("Driver: " + d.getName() + " E-mail: " + d.getEmail());
         }
 
 
@@ -145,7 +145,7 @@ public class Test {
 
     public static void main(String[] args) {
         new Test();
-        showAllTables();
+        //showAllTables();
         //showWithVariable();
     }
 }
