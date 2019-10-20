@@ -15,37 +15,25 @@ public class DriverRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+
+
     @OneToMany
-    private List<HistoricalJourney> journeyList = new ArrayList<HistoricalJourney>();
+    @JoinColumn
+    private List<HistoricalJourney> historicalJourneys = new ArrayList<HistoricalJourney>();
 
     public DriverRecord() {
 
     }
 
-    public DriverRecord(ArrayList journeyList) {
-
-        this.journeyList = journeyList;
-
+    public DriverRecord(List<HistoricalJourney> historicalJourneys) {
+        this.historicalJourneys = historicalJourneys;
     }
 
-
-    public List<HistoricalJourney> getJourneyList() {
-        return journeyList;
+    public List<HistoricalJourney> getHistoricalJourneys() {
+        return historicalJourneys;
     }
 
-    public void setJourneyList(List<HistoricalJourney> journeyList) {
-        this.journeyList = journeyList;
+    public void setHistoricalJourneys(List<HistoricalJourney> historicalJourneys) {
+        this.historicalJourneys = historicalJourneys;
     }
-
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
 }

@@ -17,6 +17,7 @@ public class Car {
     private String reg;
 
     @ManyToMany
+    @JoinTable
     private List<Driver> driversList = new ArrayList<Driver>();
 
     public Car() {

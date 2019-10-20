@@ -1,6 +1,8 @@
 package entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @NamedQueries({@NamedQuery(name = "HistoricalJourney.findAll", query = "select o from HistoricalJourney o"),
@@ -15,9 +17,9 @@ public class HistoricalJourney {
     private String journeyLength;
     private String tirednessLevel;
 
-
-
-
+    @ManyToOne
+    @JoinColumn
+    DriverRecord driverRecord;
     public HistoricalJourney() {
     }
 
@@ -25,9 +27,6 @@ public class HistoricalJourney {
         this.journeyLength = journeyLength;
         this.tirednessLevel = tirednessLevel;
     }
-
-   
-
 
 
     public int getId() {

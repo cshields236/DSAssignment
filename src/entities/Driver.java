@@ -26,6 +26,7 @@ public class Driver {
     private DriverRecord driverDriverRecord;
 
     @ManyToMany (cascade = CascadeType.ALL)
+    @JoinTable
     private List<Car> carsList = new ArrayList<Car>();
 
     public Driver() {

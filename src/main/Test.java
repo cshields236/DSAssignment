@@ -15,10 +15,13 @@ public class Test {
 
     public Test() {
         mainDAO mainDAO = new mainDAO();
+        List<Driver> driverList = mainDAO.getAllDrivers();
+        List<HistoricalJourney> journeys = mainDAO.getAllJourneys();
+        List<RealTimeJourney> realTimeJourneys = mainDAO.getAllRealTimeJourney();
+        EntityManager em = emf.createEntityManager();
 
-//          PERSIST
-//        DriverRecord rec = new DriverRecord("test");
-//        mainDAO.persist(rec);
+
+        //   PERSIST
 //
 //         driver = new Driver("Conor","conor@conor.com", "hunter2", rec);
 //
@@ -27,22 +30,22 @@ public class Test {
 //        Driver driver1 = new Driver("Frank","frank@conor.com", "hunter2");
 //        mainDAO.persist(driver1);
 //
-        List<Driver> driverList = mainDAO.getAllDrivers();
+
 //
 //
 //        Car car = new Car("VW", "13-D-19008", driverList);
 //        mainDAO.persist(car);
 
 
-//        HistoricalJourney historicalJourney = new HistoricalJourney("23km", "high");
+//        HistoricalJourney historicalJourney = new HistoricalJourney("20km", "medium");
 //        mainDAO.persist(historicalJourney);
 
-        List<HistoricalJourney> journeys = mainDAO.getAllJourneys();
+
 //
-//        DriverRecord rec;
-//        rec = new DriverRecord((ArrayList) journeys);
-//        mainDAO.persist(rec);
-//
+        DriverRecord rec;
+        rec = new DriverRecord(journeys);
+        mainDAO.persist(rec);
+
 //        Image i1 = new Image("face3", "png");
 //        Image i2 = new Image("face4", "png");
 //        Image i3 = new Image("face5", "png");
@@ -63,13 +66,13 @@ public class Test {
 
         //MERGE
         ///Driver driver1 = new Driver(4, "John", "completely@email.com", "afwewef");
-        EntityManager em = emf.createEntityManager();
+
 //        em.getTransaction().begin();
 
 //        mainDAO.remove(driver1);
 //        em.close();
 
-        Driver driver = em.find(Driver.class, 1);
+        //    Driver driver = em.find(Driver.class, 1);
 //
 //        em.getTransaction().begin();
 //        em.remove(driver);
@@ -98,7 +101,7 @@ public class Test {
 //         driver1.setEmail("frankie@yahoo.ie");
 //         mainDAO.merge(driver1);
 //        }
-//
+
 
     }
 
