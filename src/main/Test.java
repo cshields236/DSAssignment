@@ -116,13 +116,17 @@ public class Test {
 //
 
 
-        HistoricalJourney h1 = em.find(HistoricalJourney.class, 4);
+//        HistoricalJourney h1 = em.find(HistoricalJourney.class, 4);
+//        em.getTransaction().begin();
+//        em.remove(h1);
+//        em.getTransaction().commit();
+//
+//
+
+        Image image = em.find(Image.class, 1);
         em.getTransaction().begin();
-        em.remove(h1);
+        em.remove(image);
         em.getTransaction().commit();
-
-
-
 
     }
 
