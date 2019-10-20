@@ -17,7 +17,7 @@ public class DriverRecord {
 
 
 
-    @OneToMany
+    @OneToMany (cascade = CascadeType.ALL)
     @JoinColumn
     private List<HistoricalJourney> historicalJourneys = new ArrayList<HistoricalJourney>();
 

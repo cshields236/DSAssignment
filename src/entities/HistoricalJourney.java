@@ -17,7 +17,7 @@ public class HistoricalJourney {
     private String journeyLength;
     private String tirednessLevel;
 
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.ALL)
     @JoinColumn
     DriverRecord driverRecord;
     public HistoricalJourney() {

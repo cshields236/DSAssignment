@@ -18,6 +18,8 @@ public class Test {
         List<Driver> driverList = mainDAO.getAllDrivers();
         List<HistoricalJourney> journeys = mainDAO.getAllJourneys();
         List<RealTimeJourney> realTimeJourneys = mainDAO.getAllRealTimeJourney();
+        List<DriverRecord> driverRecords = mainDAO.getAllDriverRecords();
+
         EntityManager em = emf.createEntityManager();
 
 
@@ -36,29 +38,29 @@ public class Test {
 //        Car car = new Car("VW", "13-D-19008", driverList);
 //        mainDAO.persist(car);
 
-
+//
 //        HistoricalJourney historicalJourney = new HistoricalJourney("20km", "medium");
 //        mainDAO.persist(historicalJourney);
-
-
 //
-        DriverRecord rec;
-        rec = new DriverRecord(journeys);
-        mainDAO.persist(rec);
 
-//        Image i1 = new Image("face3", "png");
-//        Image i2 = new Image("face4", "png");
-//        Image i3 = new Image("face5", "png");
-//        mainDAO.persist(i1);
-//        mainDAO.persist(i2);
-//        mainDAO.persist(i3);
+////
+//        DriverRecord rec;
+//        rec = new DriverRecord(journeys);
+//        mainDAO.persist(rec);
+//
+////        Image i1 = new Image("face3", "png");
+////        Image i2 = new Image("face4", "png");
+////        Image i3 = new Image("face5", "png");
+////        mainDAO.persist(i1);
+////        mainDAO.persist(i2);
+////        mainDAO.persist(i3);
 //        for (HistoricalJourney i : journeys) {
 //            i1.setHistoricalJourney(i);
 //            i2.setHistoricalJourney(i);
 //
 //        }
-//        mainDAO.merge(i1);
-//        mainDAO.merge(i2);
+////        mainDAO.merge(i1);
+////        mainDAO.merge(i2);
 
 
         //REMOVE
@@ -101,6 +103,25 @@ public class Test {
 //         driver1.setEmail("frankie@yahoo.ie");
 //         mainDAO.merge(driver1);
 //        }
+
+
+//        List<HistoricalJourney> historicalJourneys = mainDAO.getJourneybyTirednessLevel("medium");
+//        for (HistoricalJourney h : historicalJourneys) {
+//            h.setTirednessLevel("normal");
+//            mainDAO.merge(h);
+//        }
+
+//        HistoricalJourney historicalJ = new HistoricalJourney("5", "low");
+//        mainDAO.persist(historicalJ);
+//
+
+
+        HistoricalJourney h1 = em.find(HistoricalJourney.class, 4);
+        em.getTransaction().begin();
+        em.remove(h1);
+        em.getTransaction().commit();
+
+
 
 
     }
